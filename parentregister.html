@@ -1,0 +1,35 @@
+<html>  
+<body>  
+<div id="parentform"> 
+Student roll number: <input type="text" id="rollno"><br>  
+   
+<br>Parent Email: <input type="text" id="email"><br>
+<br>Password: <input type="password" id="password">
+   
+<input type="submit" value="Submit" id="log">  
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#log").click(function(){  
+    
+    $.ajax({
+    type: "POST",
+    url: '/parentregister-controlller',
+    data: {var name = $("#rollno").val();
+           var email = $("#email").val();
+  	   var password = $("#password").val();},
+    success: function() {
+      $('#parentform').html("<div id='message'></div>");
+      $('#message').html("<h2>sign out Form Submitted!</h2>")
+      .append("<p>Wait for approval.</p>");
+      });
+    }
+  });
+  return false;
+
+    });
+</script>
+</body>  
+</html>
+
